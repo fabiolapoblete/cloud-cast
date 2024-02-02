@@ -1,8 +1,12 @@
-// import { AppRoutes } from '@solaris/router';
+import { AppRoutes } from '@cloudcast/router';
 import './App.scss';
 
 const App = () => {
-  return <div className='App'>{/* <AppRoutes /> */}</div>;
+  return (
+    <div className='App'>
+      <AppRoutes />
+    </div>
+  );
 };
 
 export default App;

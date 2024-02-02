@@ -1,0 +1,4 @@
+{
+  "name": "@cloudcast/home-page",
+  "main": "./index.ts"
+}
