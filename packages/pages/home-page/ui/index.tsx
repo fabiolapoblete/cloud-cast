@@ -1,5 +1,7 @@
 import { useData, WeatherData } from '@cloudcast/home-page';
+import { WeatherDetails } from '@cloudcast/weather-details';
 import { useState, useEffect } from 'react';
+import { SearchIcon } from '../../../../public/assets/searchIcon';
 
 export const HomePage = () => {
   const { fetchWeatherData } = useData();
@@ -17,15 +19,33 @@ export const HomePage = () => {
   }, []);
   return (
     <div className='home-page'>
-      <header></header>
+      <header>
+        <h1>CloudCast</h1>
+        <img src='./cloud.png' alt='' />
+      </header>
+
+      <section className='search'>
+        <input
+          className='search_bar'
+          type='search'
+          placeholder='Search for a city'
+          autoFocus
+        />
+        <button className='search__btn' type='submit'>
+          {SearchIcon}
+        </button>
+      </section>
+
+      {weatherData ? (
+        <main>
+          <header>
+            <h2>Weather details for {weatherData.name}</h2>
+          </header>
+          <WeatherDetails weatherData={weatherData} />
+        </main>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
-
-// {weatherData ? (
-//   // Render your weather data here
-//   <p>{weatherData.name}</p>
-// ) : (
-//   // Render a loading state or handle the case when data is not yet available
-//   <p>Loading...</p>
-// )}

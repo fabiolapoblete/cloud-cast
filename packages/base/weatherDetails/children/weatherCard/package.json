@@ -1,0 +1,4 @@
+{
+  "name": "@cloudcast/weather-card",
+  "main": "./index.ts"
+}
