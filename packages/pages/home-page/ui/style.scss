@@ -1,0 +1,40 @@
+@use '@cloudcast/styles' as *;
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  &__header {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__search {
+    display: flex;
+    gap: 2rem;
+    color: $text-color;
+
+    &--bar {
+      font-size: 1.3rem;
+      background: none;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid $text-color;
+      padding: 5px 5px 10px;
+      color: inherit;
+
+      &::placeholder {
+        color: $text-color;
+      }
+    }
+
+    &--btn {
+      color: $text-color;
+      background: none;
+      font-size: 1rem;
+      border: none;
+    }
+  }
+}

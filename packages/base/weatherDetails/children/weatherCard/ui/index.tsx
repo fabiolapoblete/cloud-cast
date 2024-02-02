@@ -1,10 +1,20 @@
+import './style.scss';
 import { WeatherDetail } from '@cloudcast/weather-details';
 
-export const WeatherCard = ({ detail, iconSrc }: WeatherDetail) => {
+export const WeatherCard = ({
+  header,
+  detail,
+  unit,
+  iconSrc,
+}: WeatherDetail) => {
   return (
-    <article>
-      <h4>{detail}</h4>
-      <img src={iconSrc} alt='Icon for weather detail' />
+    <article className='weatherCard'>
+      <img className='image' src={iconSrc} alt='Icon for weather detail' />
+      <h4 className='card-header'>{header}</h4>
+      <h3 className='card-detail'>
+        {detail}
+        {unit}
+      </h3>
     </article>
   );
 };

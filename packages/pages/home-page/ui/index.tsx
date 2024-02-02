@@ -1,3 +1,4 @@
+import './style.scss';
 import { useState, useEffect } from 'react';
 import { useData, WeatherData } from '@cloudcast/home-page';
 import { WeatherDetails } from '@cloudcast/weather-details';
@@ -35,20 +36,24 @@ export const HomePage = () => {
 
   return (
     <div className='home-page'>
-      <header>
-        <h1>CloudCast</h1>
-        <img src='./cloud.png' alt='' />
+      <header className='home-page__header'>
+        <h1 className='header'>CloudCast</h1>
+        <img className='image' src='./assets/cloud.png' alt='CloudCast logo' />
       </header>
 
-      <section className='search'>
+      <section className='home-page__search'>
         <input
-          className='search_bar'
+          className='home-page__search--bar'
           type='search'
           placeholder='Search for a city'
           autoFocus
           onChange={inputHandler}
         />
-        <button className='search__btn' type='submit' onClick={getWeatherData}>
+        <button
+          className='home-page__search--btn'
+          type='submit'
+          onClick={getWeatherData}
+        >
           {SearchIcon}
         </button>
       </section>
@@ -58,7 +63,9 @@ export const HomePage = () => {
       ) : weatherData ? (
         <main>
           <header>
-            <h2>Weather details for {weatherData.name}</h2>
+            <h2 className='sub-header'>
+              Weather details for {weatherData.name}
+            </h2>
           </header>
           <WeatherDetails weatherData={weatherData} />
         </main>

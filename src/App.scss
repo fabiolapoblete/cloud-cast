@@ -1,0 +1,35 @@
+@use '@cloudcast/styles' as *;
+
+* {
+  @include reset;
+}
+
+body {
+  background: $background-color;
+  padding-top: 4rem;
+  //   height: 100vh;
+  //   min-width: 100vw;
+  //   scroll-behavior: smooth;
+
+  .App {
+    .header {
+      @include header;
+    }
+
+    .sub-header {
+      @include sub-header;
+    }
+
+    .card-header {
+      @include card-header;
+    }
+
+    .card-detail {
+      @include card-detail;
+    }
+
+    .image {
+      @include image;
+    }
+  }
+}

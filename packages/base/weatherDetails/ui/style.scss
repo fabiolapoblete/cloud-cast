@@ -1,0 +1,13 @@
+@use '@cloudcast/styles' as *;
+
+.weatherDetails {
+  max-width: 50rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-top: 1px solid $text-color;
+  margin-top: 1rem;
+}

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+$baseline: 16px;
+
+/* COLORS */
+$text-color: whitesmoke;
+$background-color: #112159;
+$background-color-card: #d7d7d7;
+$text-color-card: #222222;
+
+/* TYPOGRAPHY */
+@mixin header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc($baseline * 2.5);
+  color: $text-color;
+}
+
+@mixin sub-header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc($baseline * 1.9);
+  font-weight: 500;
+  color: $text-color;
+}
+
+@mixin card-header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc($baseline * 1.3);
+  font-weight: 400;
+  color: $text-color-card;
+}
+
+@mixin card-detail {
+  font-family: 'Montserrat', sans-serif;
+  font-size: calc($baseline * 1.4);
+  font-weight: 500;
+  color: $text-color-card;
+}
+
+/* HELPERS */
+@mixin reset {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin image {
+  width: 3rem;
+  height: 3rem;
+}
