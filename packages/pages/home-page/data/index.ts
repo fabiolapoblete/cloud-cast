@@ -3,7 +3,7 @@ export type WeatherData = {
   clouds: {
     all: number;
   };
-  cod: number;
+  cod: string;
   coord: {
     lon: number;
     lat: number;
@@ -42,14 +42,15 @@ export type WeatherData = {
 
 export const useData = () => {
   return {
-    async fetchWeatherData(): Promise<WeatherData> {
+    async fetchWeatherData(city: string): Promise<WeatherData> {
       try {
-        const defaultCity = 'Stockholm';
-        const URL = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&units=metric&appid=${
+        const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
           import.meta.env.VITE_API_SECRET_KEY
         }`;
         const response = await fetch(URL);
         const data = await response.json();
+        console.log(data);
+
         return data as WeatherData;
       } catch (error) {
         console.error('Error fetching weather data', error);

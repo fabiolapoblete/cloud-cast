@@ -1,6 +1,6 @@
+import { useState, useEffect } from 'react';
 import { useData, WeatherData } from '@cloudcast/home-page';
 import { WeatherDetails } from '@cloudcast/weather-details';
-import { useState, useEffect } from 'react';
 import { SearchIcon } from '../../../../public/assets/searchIcon';
 
 export const HomePage = () => {
@@ -8,15 +8,31 @@ export const HomePage = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | undefined>(
     undefined
   );
+  const [searchQuery, setSearchQuery] = useState<string>('stockholm');
+  const [cityNotFound, setCityNotFound] = useState<boolean>(false);
+
+  const getWeatherData: () => Promise<void> = async () => {
+    try {
+      const data: WeatherData = await fetchWeatherData(searchQuery);
+      if (data.cod === '404') {
+        setCityNotFound(true);
+      } else {
+        setWeatherData(data);
+        setCityNotFound(false);
+      }
+    } catch (error) {
+      console.error('Error fetching weather data', error);
+    }
+  };
 
   useEffect(() => {
-    async function getWeatherData(): Promise<void> {
-      const data: WeatherData = await fetchWeatherData();
-
-      setWeatherData(data);
-    }
     getWeatherData();
   }, []);
+
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
   return (
     <div className='home-page'>
       <header>
@@ -30,13 +46,16 @@ export const HomePage = () => {
           type='search'
           placeholder='Search for a city'
           autoFocus
+          onChange={inputHandler}
         />
-        <button className='search__btn' type='submit'>
+        <button className='search__btn' type='submit' onClick={getWeatherData}>
           {SearchIcon}
         </button>
       </section>
 
-      {weatherData ? (
+      {cityNotFound ? (
+        <p>Sorry there is no weather data for your search</p>
+      ) : weatherData ? (
         <main>
           <header>
             <h2>Weather details for {weatherData.name}</h2>
