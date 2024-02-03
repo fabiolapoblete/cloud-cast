@@ -48,6 +48,11 @@ export const HomePage = () => {
           placeholder='Search for a city'
           autoFocus
           onChange={inputHandler}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              getWeatherData();
+            }
+          }}
         />
         <button
           className='home-page__search--btn'
@@ -59,7 +64,9 @@ export const HomePage = () => {
       </section>
 
       {cityNotFound ? (
-        <p>Sorry there is no weather data for your search</p>
+        <h2 className='sub-header'>
+          Sorry there is no weather data for your search
+        </h2>
       ) : weatherData ? (
         <main>
           <header>
