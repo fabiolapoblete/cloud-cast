@@ -31,7 +31,7 @@ export const Map = ({
         mapRef.current.remove();
       }
     };
-  }, [lat, lon]);
+  }, [lat, lon, name]);
 
   return (
     <article
