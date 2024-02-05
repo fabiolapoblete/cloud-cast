@@ -1,0 +1,4 @@
+{
+  "name": "@cloudcast/map",
+  "main": "./index.ts"
+}

@@ -2,6 +2,7 @@ import './style.scss';
 import { useState, useEffect } from 'react';
 import { useData, WeatherData } from '@cloudcast/home-page';
 import { WeatherDetails } from '@cloudcast/weather-details';
+import { Map } from '@cloudcast/map';
 import { SearchIcon } from '../../../../public/assets/searchIcon';
 
 export const HomePage = () => {
@@ -75,6 +76,13 @@ export const HomePage = () => {
             </h2>
           </header>
           <WeatherDetails weatherData={weatherData} />
+          <section className='map'>
+            <Map
+              lat={weatherData.coord.lat}
+              lon={weatherData.coord.lon}
+              name={weatherData.name}
+            />
+          </section>
         </main>
       ) : (
         <p>Loading...</p>
